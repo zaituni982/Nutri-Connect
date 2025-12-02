@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ request.user.username }}!</h1>
+    <p>Role: {{ request.user.role }}</p>
+
+    {% if request.user.role == "farmer" %}
+        <p><a href="{% url 'marketplace-home' %}">Manage Food Items</a></p>
+    {% elif request.user.role == "ngo" or request.user.role == "marketplace" %}
+        <p><a href="{% url 'logistics-dashboard' %}">View/Create Orders</a></p>
+    {% endif %}
+
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+</body>
+</html>
