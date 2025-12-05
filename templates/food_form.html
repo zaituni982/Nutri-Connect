@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Food</title>
+    <meta charset="UTF-8">
+    <title>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Food Item</title>
 </head>
 <body>
     <h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Food Item</h1>
-    <form method="post">
+    <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Save</button>
     </form>
-    <a href="{% url 'marketplace-home' %}">Back to List</a>
+    <p><a href="{% url 'marketplace-home' %}">Back to Marketplace</a></p>
 </body>
 </html>

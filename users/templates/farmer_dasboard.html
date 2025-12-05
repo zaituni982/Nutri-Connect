@@ -1,0 +1,37 @@
+{% extends 'users/base_dashboard.html' %}
+{% block title %}Farmer Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Farmer Dashboard</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">Your Crops</div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for crop in crops %}
+                        <li class="list-group-item">{{ crop.name }} - {{ crop.quantity }} kg</li>
+                    {% empty %}
+                        <li class="list-group-item">No crops added yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">Recent Orders</div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for order in orders %}
+                        <li class="list-group-item">{{ order.client.username }} - {{ order.status }}</li>
+                    {% empty %}
+                        <li class="list-group-item">No orders yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

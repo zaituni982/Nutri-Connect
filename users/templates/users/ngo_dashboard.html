@@ -1,0 +1,38 @@
+{% extends 'users/base_dashboard.html' %}
+{% block title %}NGO Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">NGO Dashboard</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">Ongoing Projects</div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for project in projects %}
+                        <li class="list-group-item">{{ project.name }} - {{ project.status }}</li>
+                    {% empty %}
+                        <li class="list-group-item">No projects yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">Donations</div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for donation in donations %}
+                        <li class="list-group-item">{{ donation.donor }} - {{ donation.amount }}</li>
+                    {% empty %}
+                        <li class="list-group-item">No donations yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

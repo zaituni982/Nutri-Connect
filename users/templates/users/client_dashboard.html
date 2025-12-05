@@ -1,0 +1,21 @@
+{% extends 'users/base_dashboard.html' %}
+{% block title %}Client Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Welcome, {{ request.user.username }}!</h1>
+
+<div class="card mb-3">
+    <div class="card-header">Your Recent Orders</div>
+    <div class="card-body">
+        <ul class="list-group">
+            {% for order in orders %}
+                <li class="list-group-item">{{ order.name }} - {{ order.status }}</li>
+            {% empty %}
+                <li class="list-group-item">No orders yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<a href="#" class="btn btn-primary">Place a New Order</a>
+{% endblock %}

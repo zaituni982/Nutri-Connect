@@ -1,3 +1,8 @@
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
 """
 Django settings for NutriConnect project.
 
@@ -41,7 +46,10 @@ INSTALLED_APPS = [
     'marketplace',
     'logistics',
 ]
+
+
 AUTH_USER_MODEL = 'users.CustomUser'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,7 +69,7 @@ ROOT_URLCONF = 'NutriConnect.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

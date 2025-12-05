@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Food Item</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete "{{ food.name }}"?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+    <a href="{% url 'marketplace-home' %}">Cancel</a>
+</body>
+</html>

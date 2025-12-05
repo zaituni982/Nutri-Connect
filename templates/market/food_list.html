@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marketplace - Food Items</title>
+</head>
+<body>
+    <h1>Available Food Items</h1>
+    {% if request.user.role == 'farmer' %}
+        <p><a href="{% url 'add-food' %}">Add New Food Item</a></p>
+    {% endif %}
+    <ul>
+        {% for food in foods %}
+        <li>
+            {{ food.name }} - {{ food.quantity }} units - ${{ food.price }} - Status: {{ food.status }}
+            {% if food.farmer == request.user %}
+                | <a href="{% url 'edit-food' food.pk %}">Edit</a>
+                | <a href="{% url 'delete-food' food.pk %}">Delete</a>
+            {% endif %}
+        </li>
+        {% empty %}
+        <li>No food items available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
